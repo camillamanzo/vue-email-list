@@ -1,17 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Email msg="Randomic emails:"
+    :email="emailRandomica" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Email from './components/Email.vue'
+import axios from 'axios'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Email
+  },
+
+  data(){
+    return {
+      emailRandomica : ""
+    }
+  },
+
+  mounted(){
+    console.log(axios)
+
+    axios.get("https://flynn.boolean.careers/exercises/api/random/mail")
+    .then((response) => { this.emailRandomica = response.data.response;})
   }
 }
 </script>
