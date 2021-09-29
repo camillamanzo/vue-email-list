@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ListaDiEmail from './components/Email.vue'
+import ListaDiEmail from './components/ListaDiEmail.vue'
 import axios from 'axios'
 
 export default {
