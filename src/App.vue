@@ -1,32 +1,37 @@
 <template>
   <div id="app">
-    <Email msg="Randomic emails:"
-    :email="emailRandomica" />
+    <ListaDiEmail msg="Randomic emails:" :listaEmails="listaEmails"/>
   </div>
 </template>
 
 <script>
-import Email from './components/Email.vue'
+import ListaDiEmail from './components/Email.vue'
 import axios from 'axios'
 
 export default {
   name: 'App',
   components: {
-    Email
+    ListaDiEmail
   },
 
   data(){
     return {
-      emailRandomica : ""
+      listaEmails: [],
     }
   },
 
   mounted(){
     console.log(axios)
 
-    axios.get("https://flynn.boolean.careers/exercises/api/random/mail")
-    .then((response) => { this.emailRandomica = response.data.response;})
-  }
+    for(let i = 0; i < 10; i++){
+      axios.get("https://flynn.boolean.careers/exercises/api/random/mail")
+      .then((response) => { 
+      this.listaEmails.push(response.data.response);
+      console.log(this.listaEmails)
+      })
+    }
+      
+    }
 }
 </script>
 

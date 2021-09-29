@@ -1,17 +1,21 @@
 <template>
   <div class="Emails">
     <h1>{{ msg }}</h1>
-    <p>{{ email }}</p>
+    <ul>
+      <li  v-for="(element, index) in listaEmails" :key="index"> {{ element }}</li>
+    </ul>
+    
   </div>
 </template>
 
 <script>
+
 export default {
-  name: 'Email',
+  name: 'ListaDiEmail',
   props: {
     msg: String,
-    email: String,
-  }
+    listaEmails: Array,
+  },
 }
 </script>
 
@@ -25,7 +29,6 @@ ul {
   padding: 0;
 }
 li {
-  display: inline-block;
   margin: 0 10px;
 }
 a {
